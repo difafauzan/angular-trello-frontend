@@ -1,0 +1,28 @@
+{
+  "posts": [
+    {
+      "id": 3,
+      "title": "dsasda",
+      "description": "sdadsa"
+    },
+    {
+      "id": 4,
+      "title": "asd",
+      "description": "sda"
+    },
+    {
+      "id": 5,
+      "title": "",
+      "description": ""
+    },
+    {
+      "id": 6,
+      "title": null,
+      "description": null
+    }
+  ],
+  "comments": [],
+  "profile": {
+    "name": "typicode"
+  }
+}

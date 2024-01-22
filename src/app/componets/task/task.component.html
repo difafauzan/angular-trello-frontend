@@ -1,0 +1,87 @@
+<div class="container-fluid">
+  <h1>Board</h1>
+  <div class="d-flex">
+    <button
+      type="button"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+      class="btn btn-success"
+    >
+      Add New Board
+    </button>
+  </div>
+</div>
+
+<!-- <div class="d-flex justify-content-center">
+  <div class="card-container">
+    <div class="card" *ngFor="let row of taskData" (click)="goToBoard(row.id)">
+      <div class="card-body">
+        <h5 class="card-title">{{ row.title }}</h5>
+        <p class="card-text">{{ row.description }}</p>
+        <button (click)="onEdit(row)" class="btn btn-success">Edit</button>
+        <button (click)="deleteTask(row)" class="btn btn-danger mx-3">
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Task Details</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="taskForm">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Title</label>
+            <input
+              type="text"
+              formControlName="title"
+              class="form-control"
+              id="exampleInputEmail1"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"
+              >Description</label
+            >
+            <input
+              type="text"
+              formControlName="description"
+              class="form-control"
+              id="exampleInputEmail1"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          id="cancel"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+        >
+          Close
+        </button>
+        <button type="button" class="btn btn-success">Create Task</button>
+        <button type="button" class="btn btn-primary">Update</button>
+      </div>
+    </div>
+  </div>
+</div>
