@@ -13,7 +13,11 @@ export class AuthService {
   private apiUrl = 'http://192.168.50.99:3000/auth'; // replace with your NestJS server URL
   private tokenKey = 'authToken';
 
-  constructor(private http: HttpClient, private route: Router, private cookies: CookieService) {}
+  constructor(
+    private http: HttpClient,
+    private route: Router,
+    private cookies: CookieService
+  ) {}
 
   login(username: string, password: string): Observable<any> {
     // Fix: Observable type
@@ -44,13 +48,8 @@ export class AuthService {
     return localStorage.getItem(this.tokenKey);
   }
 
-  // getLoggedInUsername(): string | undefined {
-  //   return this.loggedInUser?.username;
-  // }
-
-  isLoggedIn(): boolean
-  {
-    return (this.cookies.get('access-token')) ? true : false;
+  isLoggedIn(): boolean {
+    return this.cookies.get('access-token') ? true : false;
     // return !!localStorage.getItem(this.tokenKey);
   }
 }

@@ -104,5 +104,18 @@
   </div>
 </div>
 
+<!-- <li class="mb-1">
+        <div
+          class="icon-text-container"
+          data-bs-toggle="modal"
+          data-bs-target="#createBoardModal"
+        >
+          <i class="bx bxs-message-alt-add"></i>
+          <span class="text" style="margin-left: 20px">
+            <p>Create New Board</p>
+          </span>
+        </div>
+      </li> -->
+
 <button (click)="onEditBoard(row)" class="btn btn-success">Edit</button>
 <button (click)="deleteBoard(row)" class="btn btn-danger mx-3">Delete</button>

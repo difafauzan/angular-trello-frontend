@@ -9,15 +9,47 @@ import { VerifyEmailComponent } from './componets/verify-email/verify-email.comp
 import { ForgotPasswordComponent } from './componets/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './componets/reset-password/reset-password.component';
 import { AuthGuard } from './shared/auth.guard';
+import { SidebarComponent } from './componets/sidebar/sidebar.component';
+import { NavbarComponent } from './componets/navbar/navbar.component';
+import { NotFoundComponent } from './componets/not-found/not-found.component';
+import { HeaderComponent } from './componets/header/header.component';
 const routes: Routes = [
+  // Auth
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'task', component: TaskComponent },
-  { path: 'board', component: BoardComponent, canActivate: [AuthGuard] },
-  { path: 'kanban', component: KanbanComponent },
-  { path: 'verify-email/:token', component: VerifyEmailComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
+  { path: 'verify-email/:token', component: VerifyEmailComponent },
+
+  // Feature
+  { path: 'task', component: TaskComponent },
+  {
+    path: 'board',
+    component: BoardComponent,
+    canActivate: [AuthGuard],
+    // children: [
+    //   {
+    //     path: ':id',
+    //     component: KanbanComponent,
+    //   },
+    // ],
+  },
+  {
+    path: 'kanban/:id',
+    component: KanbanComponent,
+    children: [
+      {
+        path: ':list_id',
+        component: KanbanComponent,
+      },
+    ],
+  },
+
+  // Style component
+  { path: 'sidebar', component: SidebarComponent },
+  { path: 'navbar', component: NavbarComponent },
+  { path: 'header', component: HeaderComponent },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
