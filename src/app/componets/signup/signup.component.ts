@@ -1,20 +1,20 @@
-import { Component, OnInit } from "@angular/core";
-import { FormGroup, Validators, FormBuilder } from "@angular/forms";
-import ValidateForm from "../../helpers/validateform";
-import { HttpClient } from "@angular/common/http";
-import { catchError } from "rxjs";
-import { Router } from "@angular/router";
-import { MatSnackBar } from "@angular/material/snack-bar";
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import ValidateForm from '../../helpers/validateform';
+import { HttpClient } from '@angular/common/http';
+import { catchError } from 'rxjs';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: "app-signup",
-  templateUrl: "./signup.component.html",
-  styleUrl: "./signup.component.scss",
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrl: './signup.component.scss',
 })
 export class SignupComponent implements OnInit {
-  type: string = "password";
+  type: string = 'password';
   isText: boolean = false;
-  eyeIcon: string = "fa-eye-slash";
+  eyeIcon: string = 'fa-eye-slash';
   signUpForm!: FormGroup;
 
   constructor(
@@ -28,15 +28,15 @@ export class SignupComponent implements OnInit {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
     this.signUpForm = this.fb.group({
-      name: ["", Validators.required],
-      email: ["", Validators.required],
-      password: ["", Validators.required],
+      name: ['', Validators.required],
+      email: ['', Validators.required],
+      password: ['', Validators.required],
     });
   }
   hideShowPass() {
     this.isText = !this.isText;
-    this.isText ? (this.eyeIcon = "fa-eye") : (this.eyeIcon = "fa-eye-slash");
-    this.isText ? (this.type = "text") : (this.type = "password");
+    this.isText ? (this.eyeIcon = 'fa-eye') : (this.eyeIcon = 'fa-eye-slash');
+    this.isText ? (this.type = 'text') : (this.type = 'password');
   }
 
   onSignUp() {
@@ -45,23 +45,22 @@ export class SignupComponent implements OnInit {
       console.log(userData);
       // Make a POST request to your API for user registration
       this.http
-        .post<any>("http://192.168.50.99:3000/auth/register", userData)
+        .post<any>('http://192.168.1.245:3000/auth/register', userData)
         .pipe(
           catchError((error: any) => {
-            console.error("Error during registration:", error);
+            console.error('Error during registration:', error);
             throw error;
           })
         )
         .subscribe((response) => {
-          console.log("User registered successfully:", response);
-          this.route.navigate(["/login"]);
-          alert("Selamat anda telah berhasil melakukan registrasi!");
+          console.log('User registered successfully:', response);
         });
+        this.route.navigate(['/login']);
+        alert('Selamat anda telah berhasil melakukan registrasi!');
     } else {
       // View error
       ValidateForm.validateAllFormFileds(this.signUpForm);
-      console.log("Form is not valid");
+      console.log('Form is not valid');
     }
   }
-  
 }

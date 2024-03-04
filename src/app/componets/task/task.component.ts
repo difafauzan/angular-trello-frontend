@@ -1,15 +1,15 @@
-import { HttpClient } from "@angular/common/http";
-import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { ApiService } from "../../shared/api.service";
-import { TaskModel } from "./task.model";
-import { __values } from "tslib";
-import { Router } from "@angular/router";
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ApiService } from '../../shared/ApiService';
+import { TaskModel } from './task.model';
+import { __values } from 'tslib';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: "app-task",
-  templateUrl: "./task.component.html",
-  styleUrl: "./task.component.scss",
+  selector: 'app-task',
+  templateUrl: './task.component.html',
+  styleUrl: './task.component.scss',
 })
 export class TaskComponent implements OnInit {
   taskForm!: FormGroup;
@@ -27,8 +27,8 @@ export class TaskComponent implements OnInit {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
     this.taskForm = this.fb.group({
-      title: ["", Validators.required],
-      description: ["", Validators.required],
+      title: ['', Validators.required],
+      description: ['', Validators.required],
     });
     // this.getAllTask();
   }

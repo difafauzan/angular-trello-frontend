@@ -1,6 +1,6 @@
 export class boardModel {
-  id: number = 0;
-  title: string = '';
-  description: string = '';
-  // category: string = ''; // Add a category property
+  id!: number;
+  name: string = '';
+  created_by?: number | null;
+  list: number | any;
 }
